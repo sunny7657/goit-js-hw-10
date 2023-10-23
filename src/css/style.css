@@ -1,0 +1,39 @@
+.cat-info {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.cat-text-box {
+  width: 500px;
+  text-align: justify;
+}
+
+.cat-breed {
+  font-size: xx-large;
+  font-style: italic;
+  color: darkolivegreen;
+}
+
+.cat-descr {
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 500;
+  color: darkolivegreen;
+}
+
+.cat-temperament {
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 500;
+  color: darkolivegreen;
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  color: red;
+}
