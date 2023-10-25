@@ -14,10 +14,6 @@ const elements = {
   error: document.querySelector('.error'),
 };
 
-new SlimSelect({
-  select: '#slim-select',
-});
-
 addClass(elements.error);
 addClass(elements.select);
 
@@ -26,17 +22,22 @@ fetchBreeds()
     const markup = data
       .map(({ name, id }) => `<option value=${id}>${name}</option>`)
       .join('');
-
     elements.select.innerHTML = markup;
+    new SlimSelect({
+      select: '#selectElement',
+      settings: {
+        showSearch: false,
+      },
+    });
 
     removeClass(elements.select);
     addClass(elements.loader);
   })
   .catch(err => {
-    console.log(err);
-
     addClass(elements.loader);
     removeClass(elements.error);
+
+    console.log(err);
   });
 
 elements.select.addEventListener('change', handlerChoseCat);
@@ -44,6 +45,7 @@ elements.select.addEventListener('change', handlerChoseCat);
 function handlerChoseCat(evt) {
   removeClass(elements.loader);
   addClass(elements.div);
+  addClass(elements.error);
 
   if (!evt.target.classList.contains('breed-select')) {
     return;
@@ -61,7 +63,7 @@ function handlerChoseCat(evt) {
       })
       .catch(error => {
         addClass(elements.loader);
-        addClass(elements.select);
+        addClass(elements.div);
         removeClass(elements.error);
 
         console.log(error);
